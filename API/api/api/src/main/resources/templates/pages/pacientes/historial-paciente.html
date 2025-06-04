@@ -1,0 +1,7 @@
+<th:block th:with="pageContent = ~{contents/pacientes/historial-paciente :: content}">
+    <th:block th:replace="layouts/basicLayout :: layout(
+        title=${'Historial paciente'},
+        content=${pageContent}
+    )">
+    </th:block>
+</th:block>

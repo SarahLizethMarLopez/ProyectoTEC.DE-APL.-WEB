@@ -1,0 +1,8 @@
+<th:block th:with="pageContent = ~{contents/home :: content}">
+    <th:block th:insert="~{layouts/basicLayout :: layout(
+            title = ${'Salus Vital Care'},
+            year = ${'2025'},
+            content = ${pageContent}
+        )}">
+    </th:block>
+</th:block>

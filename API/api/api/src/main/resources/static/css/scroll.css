@@ -1,0 +1,31 @@
+.form-section {
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #0069d9 #f0f0f0;
+}
+.form-section::-webkit-scrollbar {
+    width: 8px;
+}
+.form-section::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+.form-section::-webkit-scrollbar-thumb {
+    background-color: #0069d9;
+    border-radius: 10px;
+}
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 100;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+h3{
+    color: #2d6a4f
+}

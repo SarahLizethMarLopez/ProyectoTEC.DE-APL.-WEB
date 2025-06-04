@@ -1,0 +1,8 @@
+<th:block th:with="pageContent = ~{contents/login :: content}">
+    <th:block th:insert="~{layouts/basicLayout :: layout(
+            title = ${'Iniciar Sección'},
+            year = ${'2025'},
+            content = ${pageContent}
+        )}">
+    </th:block>
+</th:block>

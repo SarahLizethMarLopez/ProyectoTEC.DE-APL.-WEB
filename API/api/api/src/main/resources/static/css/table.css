@@ -1,0 +1,39 @@
+:root{
+    --contenedor: #a9cce3;
+}
+/*Estilos generales de las tablas*/
+.consulta-table {
+    width: 80%; /* Ajuste del ancho de la tabla */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 0 auto; /*Agregue esto para centrarla*/
+}
+/*Estilos de las celdas*/
+.consulta-table th,
+.consulta-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 16px;
+}
+/*Estilos para las cabeceras de las tablas*/
+.consulta-table th {
+    background-color: var(--contenedor);
+    color: #333;
+    font-weight: bold;
+}
+/*Estilos para alternar los colores de las tablas*/
+.consulta-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+/*Estilo para cuando se pasa el cursor en las filas*/
+.consulta-table tr:hover {
+    background-color: #f1f1f1;
+}

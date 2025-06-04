@@ -1,0 +1,113 @@
+<th:block th:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/SalusVitalCare.css}">
+    <link rel="stylesheet" th:href="@{/css/scroll.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Regresar -->
+    <a th:href="@{/home}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Regresar
+    </a>
+    <style>
+        .form-section {
+            max-height: 90vh; /* Ajusta la altura máxima para permitir el scroll */
+            overflow-y: auto; /* Habilita el scroll vertical automático */
+            padding-right: 15px; /* Evita que el scrollbar se superponga al contenido */
+        }
+    </style>
+
+    <div class="form-section">
+        <h1 class="sticky-header col-12">Amanalli - Lista de Pacientes</h1>
+        <div class="table-responsive-sm">
+            <table class="consulta-table" id="tablapacientes">
+                <thead>
+                <tr>
+                    <th>CURP</th>
+                    <th>NSS</th>
+                    <th>Nombre(s)</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Abrimos una sola vez el th:each -->
+                <th:block th:each="paciente, idx : ${listaPacientes}">
+                    <tr>
+                        <!-- Fila principal -->
+                        <td th:text="${paciente.curp}"></td>
+                        <td th:text="${paciente.nss}"></td>
+                        <td th:text="${paciente.nombre}"></td>
+                        <td th:text="${paciente.apellidoPaterno}"></td>
+                        <td th:text="${paciente.apellidoMaterno}"></td>
+                        <td class="text-center p-1">
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-sm btn-primary1 collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        th:attr="data-bs-target='#det__' + ${idx.index}"
+                                        th:attrappend="aria-controls='det__' + ${idx.index}"
+                                        aria-expanded="false">
+                                    <span class="when-collapsed">Ver&nbsp;detalles</span>
+                                    <span class="when-expanded d-none">Ocultar&nbsp;detalles</span>
+                                </button>
+                                <!-- Botón Editar -->
+                                <a th:href="@{'/persona/editar/' + ${paciente.id}}" class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil-square"></i> Editar
+                                </a>
+
+                                <!-- Botón Eliminar -->
+                                <th:block th:if="${rol != 'Medico'}">
+                                    <form th:action="@{'/persona/eliminar/' + ${paciente.id}}" method="post"
+                                          th:onsubmit="return confirm('¿Estás seguro de eliminar este paciente?')">
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="bi bi-trash"></i> Eliminar
+                                        </button>
+                                    </form>
+                                </th:block>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Fila de detalles inmediatamente después -->
+                    <tr class="collapse bg-light"
+                        th:id="'det__' + ${idx.index}">
+                        <td colspan="5" class="p-1">
+                            <div class="p-2 rounded small">
+                                <ul class="list-unstyled mb-1">
+                                    <li><strong>Tipo sanguineo:</strong>
+                                        <span th:text="${paciente.idTipoSanguineo.tipo}">—</span>
+                                    </li>
+                                    <li><strong>Institución:</strong>
+                                        <span th:text="${paciente.institucion}">—</span>
+                                    </li>
+                                    <li><strong>Fecha de nacimiento:</strong>
+                                        <span th:text="${#temporals.format(paciente.fechaNacimiento,'dd/MM/yyyy')}">—</span>
+                                    </li>
+                                    <li class="mt-1"><strong>Dirección:</strong>
+                                        <div class="small">
+                                            <span th:text="${paciente.idDireccion.calle}"/>
+                                            #<span th:text="${paciente.idDireccion.numeroExterior}"/>
+                                            <span th:if="${paciente.idDireccion.numeroInterior != null}"
+                                                  th:text="'-' + ${paciente.idDireccion.numeroInterior}"/>
+                                            <br/>
+                                            C.P.&nbsp;<span th:text="${paciente.idDireccion.codigoPostal}"/>
+                                            &nbsp;•&nbsp;
+                                            <span th:text="${paciente.idDireccion.colonia}"/>,
+                                            <span th:text="${paciente.idDireccion.municipio}"/>,
+                                            <span th:text="${paciente.idDireccion.idEstado?.estado}"/>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script th:src="@{/js/scroll.js}"></script>
+    <script th:src="@{/js/detalles.js}"></script>
+
+</th:block>

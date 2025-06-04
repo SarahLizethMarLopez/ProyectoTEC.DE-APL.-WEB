@@ -1,0 +1,22 @@
+/* Fondo principal del <header> */
+.custom-header {
+    background-color: #2c3e50; /* Se aplica por herencia al navbar */
+}
+
+/* Estilo específico del navbar */
+.custom-navbar {
+    background-color: #2c3e50 !important;
+}
+
+
+/* Puedes ajustar los links del nav si es necesario */
+.navbar-nav .nav-link {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+
+/* Botón de búsqueda si quieres personalizar */
+input.search::placeholder {
+    color: #ccc;
+}

@@ -1,0 +1,17 @@
+<!--poner un bloque vacio esta seccion no esta bien hecha-->
+<!--NO IMPLEMENTAR-->
+<label
+        th:fragment="input (id, text, type, classes, pattern, maxLength)"
+        th:for="${id}"
+        th:text="${text}"
+        class="form-label fw-bold">
+</label>
+<input
+        th:type="${type}"
+        th:id="${id}"
+        th:class="${classes}"
+        th:placeholder="${text}"
+        th:pattern="${pattern}"
+        th:maxlength="${maxLength}"
+        required
+/>

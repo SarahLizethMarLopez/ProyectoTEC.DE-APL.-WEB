@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:with="pageContent = ~{contents/medicos/editar-medico :: content}">
+  <th:block th:replace="layouts/basicLayout :: layout(
+            title=${'Editar Médico'},
+            content=${pageContent}
+        )">
+  </th:block>
+</th:block>
+</html>

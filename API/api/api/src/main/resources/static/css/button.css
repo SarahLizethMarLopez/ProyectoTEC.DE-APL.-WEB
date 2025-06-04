@@ -1,0 +1,15 @@
+:root{
+    --boton-primario: #2d6a4f;
+    --boton-secundario: #7fc099;
+    --vistas: #B6BBBD;
+}
+
+.btn-primary1{
+    background-color: var(--boton-primario) !important;
+    border-color: var(--vistas) !important;
+    color: white;
+}
+.btn-primary1:hover{
+    background-color: var(--boton-secundario) !important;
+    color: black;
+}

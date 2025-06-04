@@ -1,0 +1,15 @@
+<aside th:fragment="aside (title, items, classes, style)"
+       th:class="'sidebar ' + ${classes}"
+       th:style="${style}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+  <h5 th:text="${title}" class="text-center"></h5>
+  <hr> <!-- Barra separadora -->
+
+  <div class="sidebar-content">
+    <ul class="nav flex-column mb-auto">
+      <li th:each="item : ${items}" class="nav-item">
+        <a th:href="${item.href}" th:text="${item.text}" class="nav-link">ERROR - EMPTY</a>
+      </li>
+    </ul>
+  </div>
+</aside>

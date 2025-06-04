@@ -1,0 +1,21 @@
+<!-- Modal sin botón automático -->
+<th:block th:fragment="modal(id, modalTitle, modalBody)">
+    <!-- Se eliminó el botón que estaba aquí -->
+    <div class="modal fade" th:id="${id}" tabindex="-1" th:aria-labelledby="${id} + 'modal-label'" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 th:text="${modalTitle}" class="modal-title" th:id="${id} + 'modal-label'"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div th:insert="${modalBody}" class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+<!--                    <button type="button" class="btn btn-primary1">Guardar cambios</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>

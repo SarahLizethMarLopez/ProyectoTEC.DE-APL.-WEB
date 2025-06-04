@@ -1,0 +1,354 @@
+<th:block th:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/SalusVitalCare.css}">
+    <link rel="stylesheet" th:href="@{/css/scroll.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Regresar -->
+    <a th:href="@{/home}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Regresar
+    </a>
+
+    <!-- Sección de formulario Muestras -->
+    <div class="form-section container pt-1" id="muestras">
+        <h1>Amanalli - Registro de Consultas</h1>
+        <h3>Historial Clinico</h3>
+        <div class="row justify-content-center g-2">
+            <!--/*@thymesVar id="datos" type="mx.tecnm.cdmadero.api.dtos.DtoConsulta"*/-->
+            <form th:action="@{/consultas/new}" th:object="${datos}" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label th:for="*{cedulaMedico}" class="form-label">Cedula Medico</label>
+                        <input th:field="*{cedulaMedico}" type="text" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-6">
+                        <label th:for="*{curpPaciente}" class="form-label">Curp Paciente</label>
+                        <input th:field="*{curpPaciente}" type="text" class="form-control" placeholder="Curp"/>
+                    </div>
+                </div>
+
+                <fieldset th:object="${datos.consulta.idHistoriaClinica}">
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{resultadosEstudiosActuales}" class="form-label">Resultados de Estudios Actuales</label>
+                            <input th:field="*{resultadosEstudiosActuales}" type="text" class="form-control" placeholder="Resultados"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{resultadosEstudiosPrevios}" class="form-label">Resultados de Estudios Previos</label>
+                            <input th:field="*{resultadosEstudiosPrevios}" type="text" class="form-control" placeholder="Resultados"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{diagnostico}" class="form-label">Diagnóstico</label>
+                            <input th:field="*{diagnostico}" type="text" class="form-control" placeholder="Diagnóstico"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{indicacionTerapeutica}" class="form-label">Indicaciones</label>
+                            <input th:field="*{indicacionTerapeutica}" type="text" class="form-control" placeholder="Indicaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{pronostico}" class="form-label">Pronóstico</label>
+                            <input th:field="*{pronostico}" type="text" class="form-control" placeholder="Pronóstico"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Interrogatorio</h3>
+                <fieldset th:object="${datos.consulta.idHistoriaClinica.idInterrogatorio}">
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{padecimientoActual}" class="form-label">Padecimiento</label>
+                            <input th:field="*{padecimientoActual}" type="text" class="form-control" placeholder="Padecimiento"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{antecedentesHeredoFamiliares}" class="form-label">Antecedentes Heredo-Familiares</label>
+                            <input th:field="*{antecedentesHeredoFamiliares}" type="text" class="form-control" placeholder="Antecedentes"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{consumoDeSustancias}" class="form-label">Consumo de Sustancias</label>
+                            <input th:field="*{consumoDeSustancias}" type="text" class="form-control" placeholder="Consumo de Sustancias"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{dependenciaDeSustancias}" class="form-label">Dependencia de Sustancias</label>
+                            <input th:field="*{dependenciaDeSustancias}" type="text" class="form-control" placeholder="Dependencia de Sustancias"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{otrosAntecedentesPersonalesNoPatologicos}" class="form-label">Antecedentes No Patológicos</label>
+                            <input th:field="*{otrosAntecedentesPersonalesNoPatologicos}" type="text" class="form-control" placeholder="Antecedentes"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{otrosAntecedentesPersonalesPatológicos}" class="form-label">Antecedentes Patológicos</label>
+                            <input th:field="*{otrosAntecedentesPersonalesPatológicos}" type="text" class="form-control" placeholder="Antecedentes"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{tratamientosConvencionales}" class="form-label">Tratamientos Convencionales</label>
+                            <input th:field="*{tratamientosConvencionales}" type="text" class="form-control" placeholder="Tratamientos Convencionales"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{tratamientosAlternativos}" class="form-label">Tratamientos Alternativos</label>
+                            <input th:field="*{tratamientosAlternativos}" type="text" class="form-control" placeholder="Tratamientos Alternativos"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{tratamientosTradicionales}" class="form-label">Tratamientos Tradicionales</label>
+                            <input th:field="*{tratamientosTradicionales}" type="text" class="form-control" placeholder="Tratamientos Tradicionales"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{aparatosYSistemas}" class="form-label">Aparatos y Sistemas</label>
+                            <input th:field="*{aparatosYSistemas}" type="text" class="form-control" placeholder="Aparatos y Sistemas"/>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <h3>Exploracion fisica</h3>
+                <fieldset th:object="${datos.consulta.idHistoriaClinica.idExploracionFisica}">
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{habitusExterior}" class="form-label">Habitus Exterior</label>
+                            <input th:field="*{habitusExterior}" type="text" class="form-control" placeholder="Habitus Exterior"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{pesoKg}" class="form-label">Peso (kg)</label>
+                            <input th:field="*{pesoKg}" type="text" class="form-control" placeholder="Peso"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{tallaCm}" class="form-label">Altura / Talla (cm)</label>
+                            <input th:field="*{tallaCm}" type="text" class="form-control" placeholder="Altura"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{idSignosVitales.frecuenciaCardiacaLatMin}" class="form-label">Frecuencia Cardiaca (LatMin)</label>
+                            <input th:field="*{idSignosVitales.frecuenciaCardiacaLatMin}" type="text" class="form-control" placeholder="Frecuencia"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{idSignosVitales.frecuenciaRespiratoriaRpm}" class="form-label">Frecuencia Respiratoria (rpm)</label>
+                            <input th:field="*{idSignosVitales.frecuenciaRespiratoriaRpm}" type="text" class="form-control" placeholder="Frecuencia"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{idSignosVitales.temperaturaC}" class="form-label">Temperatura (Celsius)</label>
+                            <input th:field="*{idSignosVitales.temperaturaC}" type="text" class="form-control" placeholder="Temperatura"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{idSignosVitales.tensionArterialMmhg}" class="form-label">Tensión Arterial (mmHg)</label>
+                            <input th:field="*{idSignosVitales.tensionArterialMmhg}" type="text" class="form-control" placeholder="Tensión Arterial"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{observacionesCabeza}" class="form-label">Observaciones Cabeza</label>
+                            <input th:field="*{observacionesCabeza}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{observacionesCuello}" class="form-label">Observaciones Cuello</label>
+                            <input th:field="*{observacionesCuello}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{observacionesAbdomen}" class="form-label">Observaciones Abdomen</label>
+                            <input th:field="*{observacionesAbdomen}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{observacionesTorax}" class="form-label">Observaciones Tórax</label>
+                            <input th:field="*{observacionesTorax}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{observacionesMiembros}" class="form-label">Observaciones Miembros</label>
+                            <input th:field="*{observacionesMiembros}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{observacionesGenitales}" class="form-label">Observaciones Genitales</label>
+                            <input th:field="*{observacionesGenitales}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{otrasObservaciones}" class="form-label">Observaciones Varias</label>
+                            <input th:field="*{otrasObservaciones}" type="text" class="form-control" placeholder="Observaciones"/>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <h3>Nota de Evolucion</h3>
+                <fieldset th:object="${datos.consulta.idNotaDeEvolucion}">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{evolucion}" class="form-label">Evolución</label>
+                            <input th:field="*{evolucion}" type="text" class="form-control" placeholder="Evolución"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{actualizacion}" class="form-label">Actualización</label>
+                            <input th:field="*{actualizacion}" type="text" class="form-control" placeholder="Actualización"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{resultadosReelevantes}" class="form-label">Resultados Relevantes</label>
+                            <input th:field="*{resultadosReelevantes}" type="text" class="form-control" placeholder="Resultados"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{diagnostico}" class="form-label">Diagnóstico</label>
+                            <input th:field="*{diagnostico}" type="text" class="form-control" placeholder="Diagnóstico"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{pronostico}" class="form-label">Pronóstico</label>
+                            <input th:field="*{pronostico}" type="text" class="form-control" placeholder="Pronóstico"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{indicacionesMedicas}" class="form-label">Indicaciones Médicas</label>
+                            <input th:field="*{indicacionesMedicas}" type="text" class="form-control" placeholder="Indicaciones"/>
+                        </div>
+                    </div>
+
+                    <h3>Signos Vitales</h3>
+                    <fieldset th:object="${datos.consulta.idNotaDeEvolucion}">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label th:for="*{idSignosVitales.frecuenciaCardiacaLatMin}" class="form-label">Frecuencia Cardiaca (Lat/Min)</label>
+                                <input th:field="*{idSignosVitales.frecuenciaCardiacaLatMin}" type="text" class="form-control" placeholder="Frecuencia"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label th:for="*{idSignosVitales.frecuenciaRespiratoriaRpm}" class="form-label">Frecuencia Respiratoria (rpm)</label>
+                                <input th:field="*{idSignosVitales.frecuenciaRespiratoriaRpm}" type="text" class="form-control" placeholder="Frecuencia"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label th:for="*{idSignosVitales.temperaturaC}" class="form-label">Temperatura (Celsius)</label>
+                                <input th:field="*{idSignosVitales.temperaturaC}" type="text" class="form-control" placeholder="Temperatura"/>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label th:for="*{idSignosVitales.tensionArterialMmhg}" class="form-label">Tensión Arterial (mmHg)</label>
+                                <input th:field="*{idSignosVitales.tensionArterialMmhg}" type="text" class="form-control" placeholder="Tensión Arterial"/>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <h3 class="mt-4 mb-3">Tratamiento</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{idTratamiento.indicaciones}" class="form-label">Indicaciones</label>
+                            <input th:field="*{idTratamiento.indicaciones}" type="text" class="form-control" placeholder="Indicaciones"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{idTratamiento.recomendaciones}" class="form-label">Recomendaciones</label>
+                            <input th:field="*{idTratamiento.recomendaciones}" type="text" class="form-control" placeholder="Recomendaciones"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Nota de Interconsulta</h3>
+                <fieldset th:object="${datos.consulta.idNotaDeInterconsulta}">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{criteriosDeDiagnostico}" class="form-label">Criterios de Diagnóstico</label>
+                            <input th:field="*{criteriosDeDiagnostico}" type="text" class="form-control" placeholder="Criterios de diagnóstico"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{planDeEstudios}" class="form-label">Plan de Estudios</label>
+                            <input th:field="*{planDeEstudios}" type="text" class="form-control" placeholder="Plan de estudios"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{sugerenciasDiagnosticas}" class="form-label">Sugerencias Diagnósticas</label>
+                            <input th:field="*{sugerenciasDiagnosticas}" type="text" class="form-control" placeholder="Sugerencias diagnósticas"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{motivoDeAtencion}" class="form-label">Motivo de Atención</label>
+                            <input th:field="*{motivoDeAtencion}" type="text" class="form-control" placeholder="Motivo de atención"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{resumenInterrogatorio}" class="form-label">Resumen del Interrogatorio</label>
+                            <input th:field="*{resumenInterrogatorio}" type="text" class="form-control" placeholder="Resumen del interrogatorio"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{estadoMental}" class="form-label">Estado Mental</label>
+                            <input th:field="*{estadoMental}" type="text" class="form-control" placeholder="Estado mental"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{resultadosRelevantesDeEstudios}" class="form-label">Resultados Relevantes</label>
+                            <input th:field="*{resultadosRelevantesDeEstudios}" type="text" class="form-control" placeholder="Resultados relevantes"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{diagnostico}" class="form-label">Diagnóstico</label>
+                            <input th:field="*{diagnostico}" type="text" class="form-control" placeholder="Diagnóstico"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{pronostico}" class="form-label">Pronóstico</label>
+                            <input th:field="*{pronostico}" type="text" class="form-control" placeholder="Pronóstico"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <h3>Nota de Referencia de Traslado</h3>
+                <fieldset th:object="${datos.consulta.idNotaDeTraslado}">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{establecimentoQueEnvia}" class="form-label">Establecimiento que Envía</label>
+                            <input th:field="*{establecimentoQueEnvia}" type="text" class="form-control" placeholder="Establecimiento que envía"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{establecimientoReceptor}" class="form-label">Establecimiento Receptor</label>
+                            <input th:field="*{establecimientoReceptor}" type="text" class="form-control" placeholder="Establecimiento receptor"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{motivoDeEnvio}" class="form-label">Motivo de Envío</label>
+                            <input th:field="*{motivoDeEnvio}" type="text" class="form-control" placeholder="Motivo de envío"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{impresionDiagnostica}" class="form-label">Impresión Diagnóstica</label>
+                            <input th:field="*{impresionDiagnostica}" type="text" class="form-control" placeholder="Impresión diagnóstica"/>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label th:for="*{terapeuticaEmpleada}" class="form-label">Terapéutica Empleada</label>
+                            <input th:field="*{terapeuticaEmpleada}" type="text" class="form-control" placeholder="Terapéutica empleada"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="col-12 text-center mt-4 pb-3">
+                    <button type="submit" class="btn btn-primary1">Registrar Consulta</button>
+                </div>
+            </form>
+        </div>
+        <script th:src="@{/js/scroll.js}"></script>
+    </div>
+</th:block>

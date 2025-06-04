@@ -1,0 +1,66 @@
+<header th:fragment="header" class="header custom-header text-white">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/SalusVitalCare.css}">
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+            <!-- Logo + Nombre -->
+            <a href="/home" class="navbar-brand d-flex align-items-center" id="homeLink">
+                <img th:src='@{/imgs/logoSVCv3.png}' alt="Logo" width="32" height="32" class="rounded-circle me-2">
+                <span class="fs-4 fst-italic">Salus Vital Care</span>
+            </a>
+
+            <!-- Botón responsive -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <!-- ADMIN -->
+                    <li class="nav-item" th:if="${rol == 'ADMIN'}">
+                        <a href="/persona/lista-pacientes" class="nav-link">Pacientes</a>
+                    </li>
+                    <!-- Mostrar a ADMIN y MEDICO -->
+                    <li class="nav-item" th:if="${rol == 'ADMIN' or rol == 'Medico'}">
+                        <a href="/consultas/historial" class="nav-link">Consultas</a>
+                    </li>
+
+                    <li class="nav-item" th:if="${rol == 'ADMIN'}">
+                        <a href="/personalMedico/lista-medicos" class="nav-link">Médicos</a>
+                    </li>
+                    <li class="nav-item" th:if="${rol == 'ADMIN'}">
+                        <a href="/personalMedico/form" class="nav-link">Registrar médico</a>
+                    </li>
+
+                    <!-- MEDICO -->
+                    <li class="nav-item" th:if="${rol == 'Medico'}">
+                        <a href="/persona/lista-pacientes" class="nav-link">Pacientes</a>
+                    </li>
+                    <li class="nav-item" th:if="${rol == 'Medico'}">
+                        <a href="/pacientes" class="nav-link">Registrar Paciente</a>
+                    </li>
+<!--                    <li class="nav-item" th:if="${rol == 'Medico'}">-->
+<!--                        <a href="/consultas/historial" class="nav-link">Consultas</a>-->
+<!--                    </li>-->
+                    <li class="nav-item" th:if="${rol == 'Medico'}">
+                        <a href="/consultas/registrar" class="nav-link">Registrar Consulta</a>
+                    </li>
+
+<!--                    <p th:text="'Rol actual: ' + ${rol}"></p>-->
+                </ul>
+
+<!--                &lt;!&ndash; Buscador &ndash;&gt;-->
+<!--                <form class="d-flex me-3" role="search">-->
+<!--                    <input type="search" class="form-control me-2 search" placeholder="Buscar" aria-label="Search">-->
+<!--                </form>-->
+                <!-- Solo CERRAR SESIÓN -->
+                <a th:if="${rol != null}" th:href="@{/login}" class="btn btn-outline-light me-2">Cerrar Sesión</a>
+            </div>
+        </div>
+    </nav>
+    <script defer th:src="@{/js/header.js}"></script>
+</header>

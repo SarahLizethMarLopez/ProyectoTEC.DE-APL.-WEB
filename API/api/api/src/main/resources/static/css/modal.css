@@ -1,0 +1,72 @@
+:root{
+    --header: #2c3e50;
+    --fondo: #ffffff;
+    --contenedor: #a9cce3;
+    --boton-primario: #2d6a4f;
+    --boton-secundario: #7fc099;
+    --vistas: #B6BBBD;
+}
+/*Estilos del modal*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*Estilos del contenido del modal*/
+.modal-content {
+    margin: 10% auto;
+    border: 1px solid #888;
+    background: var(--fondo);
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px;
+    width: 40%; /* Más compacto */
+    max-width: 400px; /* Ancho máximo */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+/*Botón para cerrar el modal*/
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--boton-primario);
+}
+/*Estilo para cuando el cursor pasa por encima del boton de cerrar modal*/
+.close:hover {
+    color: var(--boton-secundario);
+}
+.modal input{
+    width: 100%;
+    margin-bottom: 10px;
+}
+/*Campos de entrada osea los inputs*/
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid var(--vistas);
+    border-radius: 5px;
+    font-size: 16px;
+}
+/*Estilos de pie de modal*/
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding-right: 140px;
+}
+

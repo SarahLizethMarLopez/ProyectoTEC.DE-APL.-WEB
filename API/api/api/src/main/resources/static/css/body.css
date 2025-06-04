@@ -1,0 +1,8 @@
+:root{
+    --fondo: #ffffff;
+}
+body {
+    background-color: var(--fondo);
+    overflow: hidden; /* Evita el scroll en la página */
+    height: 100vh;
+}

@@ -1,0 +1,20 @@
+.ofrecemos {
+    background-color: var(--contenedor);
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+/* Opcional: estiliza las cards solo dentro de .ofrecemos */
+.ofrecemos .card {
+    background-color: rgba(255, 255, 255, 0.25); /* semitransparente */
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.ofrecemos .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

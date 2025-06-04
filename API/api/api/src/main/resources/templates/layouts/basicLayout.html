@@ -1,0 +1,26 @@
+<th:block th:fragment="layout(title, content)">
+    <!DOCTYPE html>
+    <html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head :: head(${title})"></head>
+    <body class="d-flex flex-column min-vh-100"> <!-- min-vh-100 para ocupar 100% de altura -->
+
+    <header th:replace="fragments/header :: header"></header>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow-1 d-flex flex-column"> <!-- flex-grow-1 empuja el footer hacia abajo -->
+        <div class="container mt-5">
+            <div class="row justify-content-center fade-in">
+                <div class="col-md-8">
+                    <div th:replace="${content}"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer th:replace="fragments/footer :: footer" class="mt-auto"></footer>
+
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    </body>
+    </html>
+</th:block>

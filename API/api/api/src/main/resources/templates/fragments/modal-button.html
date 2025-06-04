@@ -1,0 +1,8 @@
+<th:block th:fragment="modal-button(buttonText, modalId)">
+    <button th:text="${buttonText}"
+            type="button"
+            class="btn btn-primary1"
+            data-bs-toggle="modal"
+            th:data-bs-target="'#'+${modalId}">
+    </button>
+</th:block>

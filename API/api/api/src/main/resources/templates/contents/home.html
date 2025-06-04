@@ -1,0 +1,46 @@
+<th:block th:fragment="content" xmlns:th="">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <header class="conta2 text-center text-dark py-3">
+        <h1>SALUS VITAL CARE</h1>
+        <p class="lead">Conexión médica para un bienestar sin límites</p>
+        <link rel="stylesheet" th:href="@{/css/home.css}">
+    </header>
+    <div class="ofrecemos container">
+        <h2 class="text-center">¿Qué ofrecemos?</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Consultas Médicas</h5>
+                        <p class="card-text">Gestiona el servicio de consultas médicas asegurando el control de registros.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Tratamientos</h5>
+                        <p class="card-text">Garantiza un seguimiento preciso de los tratamientos médicos. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Hospitalizaciones</h5>
+                        <p class="card-text">Maneja un control riguroso y detallado de las hospitalizaciones.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Análisis Clínicos</h5>
+                        <p class="card-text">Visualiza un informe completo y detallado de los análisis clínicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
